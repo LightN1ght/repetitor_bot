@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repetitor-bot"
+version = "0.1.0"
+description = "Telegram tutor powered by Gemini"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "LightN1ght" }]
+dependencies = [
+    "aiogram==3.24.0",
+    "google-genai==1.57.0",
+    "python-dotenv==1.2.1",
+]
+
+[project.scripts]
+repetitor-bot = "repetitor_bot.main:run"
+
+[project.urls]
+Repository = "https://github.com/LightN1ght/repetitor_bot"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "--strict-markers --strict-config"
+
+[tool.coverage.run]
+source = ["repetitor_bot"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+# Keep legacy formatting and exception handling unchanged during this structural refactor.
+select = ["E4", "E9", "F"]
