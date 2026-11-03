@@ -1,4 +1,3 @@
-import asyncio
 import html
 import re
 from aiogram import Bot, Dispatcher, types
@@ -6,10 +5,10 @@ from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.storage.memory import MemoryStorage
 
-from config import BOT_TOKEN
-from ai import ask_gemini_with_history
-from states import StudyStates
-from prompts import build_start_prompt
+from .config import BOT_TOKEN
+from .ai import ask_gemini_with_history
+from .states import StudyStates
+from .prompts import build_start_prompt
 
 
 bot = Bot(token=BOT_TOKEN)
@@ -231,12 +230,3 @@ async def restart_handler(message: types.Message, state: FSMContext):
 async def restart_command(message: types.Message, state: FSMContext):
     # Call the same handler for the command
     await restart_handler(message, state)
-
-
-async def main():
-    print("Bot started...")
-    await dp.start_polling(bot)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())

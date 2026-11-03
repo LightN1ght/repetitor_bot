@@ -6,3 +6,19 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+
+# Local environments and credentials
+venv/
+.env.*
+!.env.example
+
+# Build and test artifacts
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
